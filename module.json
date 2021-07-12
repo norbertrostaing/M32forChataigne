@@ -1,0 +1,158 @@
+{
+	"name": "Midas M32 Control",
+	"type": "OSC",
+	"path": "Hardware",
+	
+	"version": "0.1",
+	"description": "Allow you to control a Midas M32 or Behringer X32 with chataigne",
+	"url":"",
+	"downloadURL": "",
+	
+	"hasInput": false,
+	"hasOutput": false, 
+
+	"hideDefaultCommands": true,
+	"hideDefaultParameters": [
+	],
+
+	"defaults": {
+		"OSC Outputs": {
+			"OSC Output": {
+				"local" : false,
+				"remotePort" : 10023,			
+				"listenToFeedback":true
+			}
+		}
+	},
+	
+	"parameters": {
+	},
+	
+	"scripts": [
+		"m32.js"
+	],
+	
+	"values": {
+	},
+	
+	"commands": {
+		
+		"Set Value":
+		{
+			"menu": "",
+			"callback": "setVal",
+			"parameters": { 
+				"Target Type": {
+					"type": "Enum",
+					"options" : {
+						"Channel" : "channel",
+						"Line in" : "linein",
+						"Player" : "player",
+						"Sub" : "sub",
+						"Aux" : "aux",
+						"Fx" : "fx"
+					}
+				}, 
+				"Target Number": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":24,
+					"useForMapping": true
+				}, 
+				"Target command": {
+					"type": "Enum",
+					"options" : {
+						"Level"  : "level" ,
+						"Mute"  : "mute" ,
+						"Pan"  : "pan" ,
+						"Gain"  : "gain" ,
+						"Phantom"  : "phantom" ,
+						"Invert"  : "invert" ,
+						"Solo"  : "solo" ,
+						"HPF freq" : "hpf.freq",
+						"EQ 1 freq" : "eq1.freq",
+						"EQ 1 gain" : "eq1.gain",
+						"EQ 1 q" : "eq1.q",
+						"EQ 2 freq" : "eq2.freq",
+						"EQ 2 gain" : "eq2.gain",
+						"EQ 2 q" : "eq2.q",
+						"EQ 3 freq" : "eq3.freq",
+						"EQ 3 gain" : "eq3.gain",
+						"EQ 3 q" : "eq3.q",
+						"EQ 4 freq" : "eq4.freq",
+						"EQ 4 gain" : "eq4.gain",
+						"EQ 4 q" : "eq4.q",
+						"Gate thresh" : "gate.thresh",
+						"Comp ratio" : "dyn.ratio",
+						"Comp threshold" : "dyn.threshold",
+						"Comp attack" : "dyn.attack",
+						"Comp release" : "dyn.release",
+						"Comp outgain" : "dyn.outgain",
+					}
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}
+			}
+		},
+
+	
+		"Set Send":
+		{
+			"menu": "",
+			"callback": "setSend",
+			"parameters": { 
+				"From Type": {
+					"type": "Enum",
+					"options" : {
+						"Channel" : "channel",
+						"Line in" : "linein",
+						"Player" : "player",
+						"Fx" : "fx"
+					}
+				}, 
+				"From Number": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":24,
+					"useForMapping": true
+				}, 
+				"To Type": {
+					"type": "Enum",
+					"options" : {
+						"Aux" : "aux",
+						"Fx" : "fx"
+					}
+				}, 
+				"To Number": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":24,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}
+			}
+		},
+
+	
+
+
+
+
+
+
+	}
+}
