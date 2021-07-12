@@ -37,104 +37,15 @@
 	
 	"commands": {
 		
-		"Set Value":
-		{
-			"menu": "",
-			"callback": "setVal",
-			"parameters": { 
-				"Target Type": {
-					"type": "Enum",
-					"options" : {
-						"Channel" : "channel",
-						"Line in" : "linein",
-						"Player" : "player",
-						"Sub" : "sub",
-						"Aux" : "aux",
-						"Fx" : "fx"
-					}
-				}, 
-				"Target Number": {
+		"channel mix fader" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_fader",
+			"parameters" : {
+				"Channel": {
 					"type": "Integer",
 					"default": 1, 
 					"min":1,
-					"max":24,
-					"useForMapping": true
-				}, 
-				"Target command": {
-					"type": "Enum",
-					"options" : {
-						"Level"  : "level" ,
-						"Mute"  : "mute" ,
-						"Pan"  : "pan" ,
-						"Gain"  : "gain" ,
-						"Phantom"  : "phantom" ,
-						"Invert"  : "invert" ,
-						"Solo"  : "solo" ,
-						"HPF freq" : "hpf.freq",
-						"EQ 1 freq" : "eq1.freq",
-						"EQ 1 gain" : "eq1.gain",
-						"EQ 1 q" : "eq1.q",
-						"EQ 2 freq" : "eq2.freq",
-						"EQ 2 gain" : "eq2.gain",
-						"EQ 2 q" : "eq2.q",
-						"EQ 3 freq" : "eq3.freq",
-						"EQ 3 gain" : "eq3.gain",
-						"EQ 3 q" : "eq3.q",
-						"EQ 4 freq" : "eq4.freq",
-						"EQ 4 gain" : "eq4.gain",
-						"EQ 4 q" : "eq4.q",
-						"Gate thresh" : "gate.thresh",
-						"Comp ratio" : "dyn.ratio",
-						"Comp threshold" : "dyn.threshold",
-						"Comp attack" : "dyn.attack",
-						"Comp release" : "dyn.release",
-						"Comp outgain" : "dyn.outgain",
-					}
-				}, 
-				"Value": {
-					"type": "Float",
-					"default": 0, 
-					"min":0,
-					"max":1,
-					"useForMapping": true
-				}
-			}
-		},
-
-	
-		"Set Send":
-		{
-			"menu": "",
-			"callback": "setSend",
-			"parameters": { 
-				"From Type": {
-					"type": "Enum",
-					"options" : {
-						"Channel" : "channel",
-						"Line in" : "linein",
-						"Player" : "player",
-						"Fx" : "fx"
-					}
-				}, 
-				"From Number": {
-					"type": "Integer",
-					"default": 1, 
-					"min":1,
-					"max":24,
-					"useForMapping": true
-				}, 
-				"To Type": {
-					"type": "Enum",
-					"options" : {
-						"Aux" : "aux",
-						"Fx" : "fx"
-					}
-				}, 
-				"To Number": {
-					"type": "Integer",
-					"default": 1, 
-					"min":1,
-					"max":24,
+					"max":32,
 					"useForMapping": true
 				}, 
 				"Value": {
@@ -143,15 +54,1405 @@
 					"min":0,
 					"max":1,
 					"useForMapping": true
-				}
+				}, 
 			}
 		},
 
-	
 
 
+//function channel_nameconfig_name(channel, value) {
+		"channel_config_name" : {
+			"menu" : "channel",
+			"callback" : "channel_config_name",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "String"
+				}, 
+			}
+		},
+
+//function channel_config_icon(channel, value) { // // /ch/XX/config/icon int [1...74] (see appendix for a list of icons) 
+		"channel_config_icon" : {
+			"menu" : "channel",
+			"callback" : "channel_config_icon",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":74,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_config_color(channel, value) { // // /ch/XX/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi} 
+		"channel_config_color" : {
+			"menu" : "channel",
+			"callback" : "channel_config_color",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Enum",
+					"options" : {
+						"OFF" : 0,
+						"RD" : 1,
+						"GN" : 2,
+						"YE" : 3,
+						"BL" : 4,
+						"MG" : 5,
+						"CY" : 6,
+						"WH" : 7,
+						"OFFi" : 8,
+						"RDi" : 9,
+						"GNi" : 10,
+						"YEi" : 11,
+						"BLi" : 12,
+						"MGi" : 13,
+						"CYi" : 14,
+						"WHi" : 15
+					}
+				}, 
+			}
+		},
 
 
+//function channel_config_source(channel, value) { // // /ch/XX/config/source int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
+		"channel_config_source" : {
+			"menu" : "channel",
+			"callback" : "channel_config_source",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Enum",
+					"options" : {
+						"Off" : 0,
+						"In1" : 1,
+						"In2" : 2,
+						"In3" : 3,
+						"In4" : 4,
+						"In5" : 5,
+						"In6" : 6,
+						"In7" : 7,
+						"In8" : 8,
+						"In9" : 9,
+						"In10" : 10,
+						"In11" : 11,
+						"In12" : 12,
+						"In13" : 13,
+						"In14" : 14,
+						"In15" : 15,
+						"In16" : 16,
+						"In17" : 17,
+						"In18" : 18,
+						"In19" : 19,
+						"In20" : 20,
+						"In21" : 21,
+						"In22" : 22,
+						"In23" : 23,
+						"In24" : 24,
+						"In25" : 25,
+						"In26" : 26,
+						"In27" : 27,
+						"In28" : 28,
+						"In29" : 29,
+						"In30" : 30,
+						"In31" : 31,
+						"In32" : 32,
+						"Aux1" : 33,
+						"Aux2" : 34,
+						"Aux3" : 35,
+						"Aux4" : 36,
+						"Aux5" : 37,
+						"Aux6" : 38,
+						"USB L" : 39,
+						"USB R" : 40,
+						"FX1 L" : 41,
+						"FX1 R" : 42,
+						"FX2 L" : 43,
+						"FX2 R" : 44,
+						"FX3 L" : 45,
+						"FX3 R" : 46,
+						"FX4 L" : 47,
+						"FX4 R" : 48,
+						"Bus 1" : 49,
+						"Bus 2" : 50,
+						"Bus 3" : 51,
+						"Bus 4" : 52,
+						"Bus 5" : 53,
+						"Bus 6" : 54,
+						"Bus 7" : 55,
+						"Bus 8" : 56,
+						"Bus 9" : 57,
+						"Bus 10" : 58,
+						"Bus 11" : 59,
+						"Bus 12" : 60,
+						"Bus 13" : 61,
+						"Bus 14" : 62,
+						"Bus 15" : 63,
+						"Bus 16" : 64
+					}
+				}, 
+			}
+		},
+
+//function channel_delay_on(channel, value) { // // /ch/XX/delay/on enum {OFF, ON}
+		"channel_delay_on" : {
+			"menu" : "channel",
+			"callback" : "channel_delay_on",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Enum",
+					"options" : {
+						"OFF" : 0,
+						"On" : 1,
+					}
+				}, 
+			}
+		},
+
+//function channel_delay_time(channel, value) { // // /ch/XX/delay/time linf [0.300, 500.000, 0.100] ms 
+		"channel_delay_time" : {
+			"menu" : "channel",
+			"callback" : "channel_delay_time",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_preamp_trim(channel, value) { // // /ch/XX/preamp/trim linf [-18.000, 18.000, 0.250] (digital sources only) dB 
+		"channel_preamp_trim" : {
+			"menu" : "channel",
+			"callback" : "channel_preamp_trim",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_preamp_invert(channel, value) { // // /ch/XX/preamp/invert enum {OFF, ON}
+		"channel_preamp_invert" : {
+			"menu" : "channel",
+			"callback" : "channel_preamp_invert",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_preamp_hpon(channel, value) { // // /ch/XX/preamp/hpon enum {OFF, ON}Sets Phantom power off or on 
+		"channel_preamp_hpon" : {
+			"menu" : "channel",
+			"callback" : "channel_preamp_hpon",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_preamp_hpslope(channel, value) { // // /ch/XX/preamp/hpslope enum {12, 18, 24} 
+		"channel_preamp_hpslope" : {
+			"menu" : "channel",
+			"callback" : "channel_preamp_hpslope",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_preamp_hpf(channel, value) { // // /ch/XX/preamp/hpf logf [20.000, 400.000, 101]10Hz 
+		"channel_preamp_hpf" : {
+			"menu" : "channel",
+			"callback" : "channel_preamp_hpf",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_on(channel, value) { // // /ch/XX/gate/on enum {OFF, ON}
+		"channel_gate_on" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_on",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_mode(channel, value) { // // /ch/XX/gate/mode enum int [0...4] representing  {EXP2, EXP3, EXP4, GATE, DUCK} 
+		"channel_gate_mode" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_mode",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_thr(channel, value) { // // /ch/XX/gate/thr linf [-80.000, 0.000, 0.500] dB 
+		"channel_gate_thr" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_thr",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_range(channel, value) { // // /ch/XX/gate/range linf [3.000, 60.000, 1.000] dB 
+		"channel_gate_range" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_range",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_attack(channel, value) { // // /ch/XX/gate/attack linf [0.000, 120.000, 1.000] ms 
+		"channel_gate_attack" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_attack",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_hold(channel, value) { // // /ch/XX/gate/hold logf [0.020, 2000, 101]11ms 
+		"channel_gate_hold" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_hold",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_release(channel, value) { // // /ch/XX/gate/release logf [5.000, 4000.000, 101]12ms 
+		"channel_gate_release" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_release",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_keysrc(channel, value) { // // /ch/XX/gate/keysrc int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
+		"channel_gate_keysrc" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_keysrc",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_filter(channel, value) { // // /ch/XX/gate/filter/on enum {OFF, ON}
+		"channel_gate_filter" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_filter",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_filter(channel, value) { // // /ch/XX/gate/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
+		"channel_gate_filter" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_filter",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_gate_filter(channel, value) { // // /ch/XX/gate/filter/f Logf [20.000, 20000, 201]13Hz 
+		"channel_gate_filter" : {
+			"menu" : "channel",
+			"callback" : "channel_gate_filter",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_on(channel, value) { // // /ch/XX/dyn/on enum {OFF, ON}
+		"channel_dyn_on" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_on",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_mode(channel, value) { // // /ch/XX/dyn/mode enum {COMP, EXP} 
+		"channel_dyn_mode" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_mode",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_det(channel, value) { // // /ch/XX/dyn/det enum {PEAK, RMS} 
+		"channel_dyn_det" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_det",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_env(channel, value) { // // /ch/XX/dyn/env enum {LIN, LOG} 
+		"channel_dyn_env" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_env",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_thr(channel, value) { // // /ch/XX/dyn/thr linf [-60.000, 0.000, 0.500] dB 
+		"channel_dyn_thr" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_thr",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_ratio(channel, value) { // // /ch/XX/dyn/ratio enum int with value [0...11] representing {1.1, 1.3, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10, 20, 100} 10 See Appendix section for detailed values 11 See Appendix section for detailed values 12 See Appendix section for detailed values 13 See Appendix section for detailed values 
+		"channel_dyn_ratio" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_ratio",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_knee(channel, value) { // // /ch/XX/dyn/knee linf [0.000, 5.000, 1.000] 
+		"channel_dyn_knee" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_knee",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_mgain(channel, value) { // // /ch/XX/dyn/mgain linf [0.000, 24.000, 0.500] dB 
+		"channel_dyn_mgain" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_mgain",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_attack(channel, value) { // // /ch/XX/dyn/attack linf [0.000, 120.000, 1.000] ms 
+		"channel_dyn_attack" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_attack",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_hold(channel, value) { // // /ch/XX/dyn/hold logf [0.020, 2000, 101] ms 
+		"channel_dyn_hold" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_hold",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_release(channel, value) { // // /ch/XX/dyn/release logf [5.000, 4000.000, 101] ms 
+		"channel_dyn_release" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_release",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_pos(channel, value) { // // /ch/XX/dyn/pos enum {PRE, POST} 
+		"channel_dyn_pos" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_pos",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_keysrc(channel, value) { // // /ch/XX/dyn/keysrc int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
+		"channel_dyn_keysrc" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_keysrc",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_mix(channel, value) { // // /ch/XX/dyn/mix linf [0, 100, 5] % 
+		"channel_dyn_mix" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_mix",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_auto(channel, value) { // // /ch/XX/dyn/auto enum {OFF, ON}
+		"channel_dyn_auto" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_auto",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_filter(channel, value) { // // /ch/XX/dyn/filter/on enum {OFF, ON}
+		"channel_dyn_filter" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_filter",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_filter(channel, value) { // // /ch/XX/dyn/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
+		"channel_dyn_filter" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_filter",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_dyn_filter(channel, value) { // // /ch/XX/dyn/filter/f logf [20.000, 20000, 201] Hz 
+		"channel_dyn_filter" : {
+			"menu" : "channel",
+			"callback" : "channel_dyn_filter",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_insert_on(channel, value) { // // /ch/XX/insert/on enum {OFF, ON}
+		"channel_insert_on" : {
+			"menu" : "channel",
+			"callback" : "channel_insert_on",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_insert_pos(channel, value) { // // /ch/XX/insert/pos enum {PRE, POST}
+		"channel_insert_pos" : {
+			"menu" : "channel",
+			"callback" : "channel_insert_pos",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_insert_sel(channel, value) { // // /ch/XX/insert/sel enum int with value [0...22] representing {OFF, FX1L, FX1R, FX2L, FX2R, FX3L, FX3R, FX4L, FX4R, FX5L, FX5R, FX6L, FX6R, FX7L, FX7R, FX8L, FX8R, AUX1, AUX2, AUX3, AUX4, AUX5, AUX6} 
+		"channel_insert_sel" : {
+			"menu" : "channel",
+			"callback" : "channel_insert_sel",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_eq_on(channel, value) { // // /ch/XX/eq/on enum {OFF, ON}
+		"channel_eq_on" : {
+			"menu" : "channel",
+			"callback" : "channel_eq_on",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_eq_type(channel, band, value) { // // /ch/XX/eq/1_4/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut} 
+		"channel_eq_type" : {
+			"menu" : "channel",
+			"callback" : "channel_eq_type",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_eq_f(channel, band, value) { // // /ch/XX/eq/1_4/f logf [20.000, 20000, 201] Hz 
+		"channel_eq_f" : {
+			"menu" : "channel",
+			"callback" : "channel_eq_f",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_eq_g(channel, band, value) { // // /ch/XX/eq/1_4/g linf [-15.000, 15.000, 0.250] dB 
+		"channel_eq_g" : {
+			"menu" : "channel",
+			"callback" : "channel_eq_g",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_eq_q(channel, band, value) { // // /ch/XX/eq/1_4/q logf [10.000, 0.3, 72] 
+		"channel_eq_q" : {
+			"menu" : "channel",
+			"callback" : "channel_eq_q",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_mix_on(channel, value) { // // /ch/XX/mix/on enum {OFF, ON}
+		"channel_mix_on" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_on",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_mix_fader(channel, value) { // // /ch/XX/mix/fader level [0.0...1.0(+10dB), 1024] dB 
+		"channel_mix_fader" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_fader",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_mix_st(channel, value) { // // /ch/XX/mix/st enum {OFF, ON}
+		"channel_mix_st" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_st",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_mix_pan(channel, value) { // // /ch/XX/mix/pan linf [-100.000, 100.000, 2.000] 
+		"channel_mix_pan" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_pan",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_mix_mono(channel, value) { // // /ch/XX/mix/mono enum {OFF, ON}
+		"channel_mix_mono" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_mono",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_mix_mlevel(channel, value) { // // /ch/XX/mix/mlevel level [0.0...1.0 (+10 dB), 161] dB 
+		"channel_mix_mlevel" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_mlevel",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//mix_on(channel, mix, value) { // // /ch/XX/mix/0116/on enum {OFF, ON}
+		"channel mix fader" : {
+			"menu" : "channel",
+			"callback" : "channel",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_mix_send_level(channel, mix, value) { // // /ch/XX/mix/0116/level level [0.0...1.0 (+10 dB), 161] dB 
+		"channel_mix_send_level" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_send_level",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_mix_send_pan(channel, mix, value) { // // /ch/XX/mix/01/pan linf [-100.000, 100.000, 2.000] 
+		"channel_mix_send_pan" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_send_pan",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_mix_send_Type(channel, mix, value) { // // /ch/XX/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP} 
+		"channel_mix_send_Type" : {
+			"menu" : "channel",
+			"callback" : "channel_mix_send_Type",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_grp_dca(channel, value) { // // /ch/XX/grp/dca %int [0, 255] (bitmap) 
+		"channel_grp_dca" : {
+			"menu" : "channel",
+			"callback" : "channel_grp_dca",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
+
+//function channel_grp_mute(channel, value) { // // /ch/XX/grp/mute %int [0, 63] (bitmap)
+		"channel_grp_mute" : {
+			"menu" : "channel",
+			"callback" : "channel_grp_mute",
+			"parameters" : {
+				"Channel": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":32,
+					"useForMapping": true
+				}, 
+				"Value": {
+					"type": "Float",
+					"default": 0, 
+					"min":0,
+					"max":1,
+					"useForMapping": true
+				}, 
+			}
+		},
 
 
 	}
