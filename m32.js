@@ -352,21 +352,19 @@ function channel_mix_on(channel, mix, value) { // // /ch/XX/mix/0116/on enum {OF
 function channel_mix_send_level(channel, mix, value) { // // /ch/XX/mix/0116/level level [0.0...1.0 (+10 dB), 161] dB 
 	if (channel < 10) {channel = "0"+channel; } 
 	if (mix < 10) {mix = "0"+mix; } 
-	// /ch/XX/mix/0116/level level [0.0...1.0 (+10 dB), 161] dB 
 	local.send("/ch/"+channel+"/mix/"+mix+"/level", value);
 }
 
 function channel_mix_send_pan(channel, mix, value) { // // /ch/XX/mix/01/pan linf [-100.000, 100.000, 2.000] 
 	if (channel < 10) {channel = "0"+channel; } 
 	if (mix < 10) {mix = "0"+mix; } 
-	// /ch/XX/mix/01/pan linf [-100.000, 100.000, 2.000] 
 	local.send("/ch/"+channel+"/mix/"+mix+"/pan", value);
 }
 
 function channel_mix_send_Type(channel, mix, value) { // // /ch/XX/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP} 
 	if (channel < 10) {channel = "0"+channel; } 
 	if (mix < 10) {mix = "0"+mix; } 
-	local.send("/ch/"+channel+"/mix/01", value);
+	local.send("/ch/"+channel+"/mix/"+mix+"/pan", value);
 }
 
 /* a voir plus tard
