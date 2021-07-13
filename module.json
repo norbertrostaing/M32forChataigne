@@ -493,7 +493,6 @@
 			}
 		},
 
-//function channel_gate_keysrc(channel, value) { // // /ch/XX/gate/keysrc int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
 		"channel_gate_keysrc" : {
 			"menu" : "channel",
 			"callback" : "channel_gate_keysrc",
