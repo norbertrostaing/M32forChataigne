@@ -377,4 +377,249 @@ function channel_grp_mute(channel, value) { // // /ch/XX/grp/mute %int [0, 63] (
 	if (channel < 10) {channel = "0"+channel; } 
 	local.send("/ch/"+channel+"/grp/mute", value);
 }
+
+
+/auxin/[01...08]/config/name string [12] 
+/auxin/[01...08]/config/icon int [1...74] (see appendix for a list of icons) 
+/auxin/[01...08]/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
+/auxin/[01...08]/config/source int int with value [0...64] representing {OFF, In01...32,Aux 1...6,USB L, USB R,  Fx 1L...Fx4R, Bus 01...16}
+/auxin/[01...08]/preamp/trim linf [-18.000, 18.000, 0.250] dB 
+/auxin/[01...08]/preamp/invert enum {OFF, ON}
+/auxin/[01...08]/eq/on enum {OFF, ON}
+/auxin/[01...08]/eq/[1...4]/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut}
+/auxin/[01...08]/eq/[1...4]/f logf [20.000, 20000, 201] Hz/dB 
+/auxin/[01...08]/eq/[1...4]/g linf [-15.000, 15.000, 0.250] 
+/auxin/[01...08]/eq/[1...4]/q logf [10.000, 0.3, 72] 
+/auxin/[01...08]/mix/on enum {OFF, ON}
+/auxin/[01...08]/mix/fader level [0.0...1.0(+10dB), 1024] 
+/auxin/[01...08]/mix/st enum {OFF, ON}
+/auxin/[01...08]/mix/pan linf [-100.000, 100.000, 2.000] 
+/auxin/[01...08]/mix/mono enum {OFF, ON}
+/auxin/[01...08]/mix/mlevel level [0.0...1.0 (+10 dB), 161] 
+/auxin/[01...08]/mix/[01...16]/on enum {OFF, ON}
+/auxin/[01...08]/mix/[01...16]/level level [0.0...1.0 (+10 dB), 161] 
+/auxin/[01...08]/mix/01/pan linf [-100.000, 100.000, 2.000] 
+/auxin/[01...08]/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/auxin/[01...08]/mix/03/pan linf [-100.000, 100.000, 2.000] 
+/auxin/[01...08]/mix/03/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/auxin/[01...08]/mix/05/pan linf [-100.000, 100.000, 2.000] 
+/auxin/[01...08]/mix/05/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/auxin/[01...08]/mix/07/pan linf [-100.000, 100.000, 2.000] 
+/auxin/[01...08]/mix/07/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/auxin/[01...08]/mix/09/pan linf [-100.000, 100.000, 2.000] 
+/auxin/[01...08]/mix/09/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/auxin/[01...08]/mix/11/pan linf [-100.000, 100.000, 2.000] 
+/auxin/[01...08]/mix/11/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/auxin/[01...08]/mix/13/pan linf [-100.000, 100.000, 2.000] 
+/auxin/[01...08]/mix/13/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/auxin/[01...08]/mix/15/pan linf [-100.000, 100.000, 2.000] 
+/auxin/[01...08]/mix/15/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/auxin/[01...08]/grp/dca %int [0, 255] (bitmap)
+/auxin/[01...08]/grp/mute %int [0, 63] (bitmap)
+
+
+/fxrtn/[01...08]/config/name string [12] 
+/fxrtn/[01...08]/config/icon int [1...74] (see appendix for a list of icons) 
+/fxrtn/[01...08]/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
+/fxrtn/[01...08]/eq/on enum {OFF, ON}
+/fxrtn/[01...08]/eq/[1...4]/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut}
+/fxrtn/[01...08]/eq/[1...4]/f logf [20.000, 20000, 201] Hz 
+/fxrtn/[01...08]/eq/[1...4]/g linf [-15.000, 15.000, 0.250] dB 
+/fxrtn/[01...08]/eq/[1...4]/q logf [10.000, 0.3, 72] 
+/fxrtn/[01...08]/mix/on enum {OFF, ON}
+/fxrtn/[01...08]/mix/fader level [0.0...1.0(+10dB), 1024] dB 
+/fxrtn/[01...08]/mix/st enum {OFF, ON}
+/fxrtn/[01...08]/mix/pan linf [-100.000, 100.000, 2.000] dB 
+/fxrtn/[01...08]/mix/mono enum {OFF, ON}
+/fxrtn/[01...08]/mix/mlevel level [0.0...1.0 (+10 dB), 161] dB 
+/fxrtn/[01...08]/mix/[01...16]/on enum {OFF, ON}
+/fxrtn/[01...08]/mix/[01...16]/level level [0.0...1.0 (+10 dB), 161] dB 
+/fxrtn/[01...08]/mix/01/pan linf [-100.000, 100.000, 2.000] 
+/fxrtn/[01...08]/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/fxrtn/[01...08]/mix/03/pan linf [-100.000, 100.000, 2.000] 
+/fxrtn/[01...08]/mix/03/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/fxrtn/[01...08]/mix/05/pan linf [-100.000, 100.000, 2.000] 
+/fxrtn/[01...08]/mix/05/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/fxrtn/[01...08]/mix/07/pan linf [-100.000, 100.000, 2.000] 
+/fxrtn/[01...08]/mix/07/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/fxrtn/[01...08]/mix/09/pan linf [-100.000, 100.000, 2.000] 
+/fxrtn/[01...08]/mix/09/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/fxrtn/[01...08]/mix/11/pan linf [-100.000, 100.000, 2.000] 
+/fxrtn/[01...08]/mix/11/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/fxrtn/[01...08]/mix/13/pan linf [-100.000, 100.000, 2.000] 
+/fxrtn/[01...08]/mix/13/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/fxrtn/[01...08]/mix/15/pan linf [-100.000, 100.000, 2.000] 
+/fxrtn/[01...08]/mix/15/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
+/fxrtn/[01...08]/grp/dca %int [0, 255] (bitmap) 
+/fxrtn/[01...08]/grp/mute %int [0, 63] (bitmap) 
+
+
+/bus/[01...16]/config/name string [12] 
+/bus/[01...16]/config/icon int [1...74] (see appendix for a list of icons) 
+/bus/[01...16]/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
+/bus/[01...16]/dyn/on enum {OFF, ON}
+/bus/[01...16]/dyn/mode enum {COMP, EXP}
+/bus/[01...16]/dyn/det enum {PEAK, RMS}
+/bus/[01...16]/dyn/env enum {LIN, LOG}
+/bus/[01...16]/dyn/thr linf [-60.000, 0.000, 0.500] dB 
+/bus/[01...16]/dyn/ratio enum int with value [0...11] representing {1.1, 1.3, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10, 20, 100}
+/bus/[01...16]/dyn/knee linf [0.000, 5.000, 1.000] 
+/bus/[01...16]/dyn/mgain linf [0.000, 24.000, 0.500] dB 
+/bus/[01...16]/dyn/attack linf [0.000, 120.000, 1.000] ms 
+/bus/[01...16]/dyn/hold logf [0.020, 2000, 101] ms 
+/bus/[01...16]/dyn/release logf [5.000, 4000.000, 101] ms 
+/bus/[01...16]/dyn/pos enum {PRE, POST}
+/bus/[01...16]/dyn/keysrc int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16}
+/bus/[01...16]/dyn/mix linf [0, 100, 5] % 
+/bus/[01...16]/dyn/auto15enum {OFF, ON}
+/bus/[01...16]/dyn/filter/on enum {OFF, ON}
+/bus/[01...16]/dyn/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0}
+/bus/[01...16]/dyn/filter/f logf [20.000, 20000, 201] Hz 
+/bus/[01...16]/insert/on enum {OFF, ON}
+/bus/[01...16]/insert/pos enum {PRE, POST}
+/bus/[01...16]/insert/sel enum int with value [0...22] representing {OFF, FX1L, FX1R, FX2L, FX2R, FX3L, FX3R, FX4L, FX4R, FX5L, FX5R, FX6L, FX6R, FX7L, FX7R, FX8L, FX8R, AUX1, AUX2, AUX3, AUX4, AUX5, AUX6}
+/bus/[01...16]/eq/on enum {OFF, ON}
+/bus/[01...16]/eq/[1...6]/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut}
+/bus/[01...16]/eq/[1...6]/f logf [20.000, 20000, 201] Hz 
+/bus/[01...16]/eq/[1...6]/g linf [-15.000, 15.000, 0.250] dB 
+/bus/[01...16]/eq/[1...6]/q logf [10.000, 0.3, 72] 
+/bus/[01...16]/mix/on enum {OFF, ON}15 This command is available starting with FW 2.10 
+/bus/[01...16]/mix/fader level [0.0...1.0(+10dB), 1024] dB 
+/bus/[01...16]/mix/st enum {OFF, ON}
+/bus/[01...16]/mix/pan linf [-100.000, 100.000, 2.000] 
+/bus/[01...16]/mix/mono enum {OFF, ON}
+/bus/[01...16]/mix/mlevel level [0.0...1.0(+10dB), 161] dB 
+/bus/[01...16]/mix/[01...06]/on enum {OFF, ON}
+/bus/[01...16]/mix/[01...06]/level level [0.0...1.0(+10dB), 161] dB 
+/bus/[01...16]/mix/01/pan linf [-100.000, 100.000, 2.000] 
+/bus/[01...16]/mix/03/pan linf [-100.000, 100.000, 2.000] 
+/bus/[01...16]/mix/05/pan linf [-100.000, 100.000, 2.000] 
+/bus/[01...16]/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+/bus/[01...16]/mix/03/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+/bus/[01...16]/mix/05/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+/bus/[01...16]/grp/dca %int [0, 255] (bitmap) 
+/bus/[01...16]/grp/mute %int [0, 63] (bitmap)
+
+
+/mtx/[01...06]/config/name string [12] 
+/mtx/[01...06]/config/icon int [1...74] (see appendix for a list of icons) 
+/mtx/[01...06]/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
+/mtx/[01...06]/config/preamp/invert enum {OFF, ON}
+/mtx/[01...06]/dyn/on enum {OFF, ON}
+/mtx/[01...06]/dyn/mode enum {COMP, EXP}
+/mtx/[01...06]/dyn/det enum {PEAK, RMS}
+/mtx/[01...06]/dyn/env enum {UN, LOG}
+/mtx/[01...06]/dyn/thr linf [-60.000, 0.000, 0.500] dB 
+/mtx/[01...06]/dyn/ratio enum int with value [0...11] representing {1.1, 1.3, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10, 20, 100}
+/mtx/[01...06]/dyn/knee linf [0.000, 5.000, 1.000] 
+/mtx/[01...06]/dyn/mgain linf [0.000, 24.000, 0.500] dB 
+/mtx/[01...06]/dyn/attack linf [0.000, 120.000, 1.000] ms 
+/mtx/[01...06]/dyn/hold logf [0.020, 2000, 101] ms 
+/mtx/[01...06]/dyn/release logf [5.000, 4000.000, 101] ms 
+/mtx/[01...06]/dyn/pos enum {PRE, POST}
+/mtx/[01...06]/dyn/mix linf [0, 100, 5] % 
+/mtx/[01...06]/dyn/auto16enum {OFF, ON}
+/mtx/[01...06]/dyn/filter/on enum {OFF, ON}
+/mtx/[01...06]/dyn/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0}
+/mtx/[01...06]/dyn/filter/f logf [20.000, 20000, 201] Hz 
+/mtx/[01...06]/insert/on enum {OFF, ON}
+/mtx/[01...06]/insert/pos enum {PRE, POST}
+/mtx/[01...06]/insert/sel enum int with value [0...22] representing {OFF, FX1L, FX1R, FX2L, FX2R, FX3L, FX3R, FX4L, FX4R, FX5L, FX5R, FX6L, FX6R, FX7L, FX7R, FX8L, FX8R, AUX1, AUX2, AUX3, AUX4, AUX5, AUX6}
+/mtx/[01...06]/eq/on enum {OFF, ON}
+/mtx/[01...06]/eq/[1...6]/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut}For /mtx/01/ and mtx/06/ type extends to int [0...13] adding {BU6, BU12, BS12, LR12, BU18, BU24, BS24, LR24}. In that case /mtx/02/ and /mtx/05/ are ignored, repectively. 
+/mtx/[01...06]/eq/[1...6]/f logf [20.000, 20000, 201] Hz 
+/mtx/[01...06]/eq/[1...6]/g linf [-15.000, 15.000, 0.250] dB 
+/mtx/[01...06]/eq/[1...6]/q logf [10.000, 0.3, 72] 16 This command is available starting with FW 2.10 
+/mtx/[01...06]/mix/on enum {OFF, ON}
+/mtx/[01...06]/mix/fader level [0.0...1.0(+10dB), 1024]
+
+
+/main/st/config/name string [12] 
+/main/st/config/icon Int [1...74] (see appendix for a list of icons) 
+/main/st/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
+/main/st/dyn/on enum {OFF, ON}
+/main/st/dyn/mode enum {COMP, EXP}
+/main/st/dyn/det enum {PEAK, RMS}
+/main/st/dyn/env enum {LIN, LOG}
+/main/st/dyn/thr linf [-60.000, 0.000, 0.500] dB 
+/main/st/dyn/ratio enum int with value [0...11] representing {1.1, 1.3, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10, 20, 100}
+/main/st/dyn/knee linf [0.000, 5.000, 1.000] 
+/main/st/dyn/mgain linf [0.000, 24.000, 0.500] dB 
+/main/st/dyn/attack linf [0.000, 120.000, 1.000] ms 
+/main/st/dyn/hold logf [0.020, 2000, 101] ms 
+/main/st/dyn/release logf [5.000, 4000.000, 101] ms 
+/main/st/dyn/pos enum {PRE, POST}
+/main/st/dyn/mix linf [0, 100, 5] % 
+/main/st/dyn/auto17enum {OFF, ON}
+/main/st/dyn/filter/on enum {OFF, ON}
+/main/st/dyn/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0}
+/main/st/dyn/filter/f logf [20.000, 20000, 201] Hz 
+/main/st/insert/on enum {OFF, ON}
+/main/st/insert/pos enum {PRE, POST}
+/main/st/insert/sel enum int with value [0...22] representing {OFF, FX1L, FX1R, FX2L, FX2R, FX3L, FX3R, FX4L, FX4R, FX5L, FX5R, FX6L, FX6R, FX7L, FX7R, FX8L, FX8R, AUX1, AUX2, AUX3, AUX4, AUX5, AUX6}
+/main/st/eq/on enum {OFF, ON}
+/main/st/eq/[1...6]/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut}
+/main/st/eq/[1...6]/f logf [20.000, 20000, 201] Hz 
+/main/st/eq/[1...6]/g linf [-15.000, 15.000, 0.250] dB 
+/main/st/eq/[1...6]/q logf [10.000, 0.3, 72] 
+/main/st/mix/on enum {OFF, ON}
+/main/st/mix/fader level [0.0...1.0(+10dB), 1024] dB 
+/main/st/mix/pan linf [-100.000, 100.000, 2.000] 
+/main/st/mix/[01...06]/on enum {OFF, ON}17 This command is available starting with FW 2.10 
+/main/st/mix/[01...06]/level level [0.0...1.0(+10dB), 161] dB 
+/main/st/mix/01/pan linf [-100.000, 100.000, 2.000] 
+/main/st/mix/03/pan linf [-100.000, 100.000, 2.000] 
+/main/st/mix/05/pan linf [-100.000, 100.000, 2.000] 
+/main/st/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+/main/st/mix/03/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+/main/st/mix/05/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+
+
+/main/m/config/name string [12] 
+/main/m/config/icon Int [1...74] (see appendix for a list of icons) 
+/main/m/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
+/main/m/dyn/on enum {OFF, ON}
+/main/m/dyn/mode enum {COMP, EXP}
+/main/m/dyn/det enum {PEAK, RMS}
+/main/m/dyn/env enum {LIN, LOG}
+/main/m/dyn/thr linf [-60.000, 0.000, 0.500] dB 
+/main/m/dyn/ratio enum int with value [0...11] representing {1.1, 1.3, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10, 20, 100}
+/main/m/dyn/knee linf [0.000, 5.000, 1.000] 
+/main/m/dyn/mgain linf [0.000, 24.000, 0.500] dB 
+/main/m/dyn/attack linf [0.000, 120.000, 1.000] ms 
+/main/m/dyn/hold logf [0.020, 2000, 101] ms 
+/main/m/dyn/release logf [5.000, 4000.000, 101] ms 
+/main/m/dyn/pos enum {PRE, POST}
+/main/m/dyn/mix linf [0, 100, 5] % 
+/main/m/dyn/auto18enum {OFF, ON}
+/main/m/dyn/filter/on enum {OFF, ON}
+/main/m/dyn/filter/type enum int with value [0, 8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0}
+/main/m/dyn/filter/f logf [20.000, 20000, 201] Hz 
+/main/m/insert/on enum {OFF, ON}
+/main/m/insert/pos enum {PRE, POST}
+/main/m/insert/sel enum int with value [0...22] representing {OFF, FX1L, FX1R, FX2L, FX2R, FX3L, FX3R, FX4L, FX4R, FX5L, FX5R, FX6L, FX6R, FX7L, FX7R, FX8L, FX8R, AUX1, AUX2, AUX3, AUX4, AUX5, AUX6} 
+/main/m/eq/on enum {OFF, ON}
+/main/m/eq/[1...6]/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut}
+/main/m/eq/[1...6]/f logf [20.000, 20000, 201] Hz 
+/main/m/eq/[1...6]/g linf [-15.000, 15.000, 0.250] dB 
+/main/m/eq/[1...6]/q logf [10.000, 0.3, 72] 
+/main/m/mix/on enum {OFF, ON}
+/main/m/mix/fader level [0.0...1.0(+10dB), 1024] dB 
+/main/m/mix/[01...06]/on enum {OFF, ON}
+/main/m/mix/[01...06]/level level [0.0...1.0(+10dB), 161] dB 18 This command is available starting with FW 2.10 
+/main/m/mix/01/pan linf [-100.000, 100.000, 2.000] 
+/main/m/mix/03/pan linf [-100.000, 100.000, 2.000] 
+/main/m/mix/05/pan linf [-100.000, 100.000, 2.000] 
+/main/m/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+/main/m/mix/03/ type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+/main/m/mix/05/ type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+
+
+/dca/[1...8]/on enum {OFF, ON}
+/dca/[1...8]/fader level [0.0...1.0(+10dB), 1024] dB 
+/dca/[1...8]/config/name string [12] 
+/dca/[1...8]/config/icon Int [1...74] (see appendix for a list of icons) 
+/dca/[1...8]/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
+
+
 */
