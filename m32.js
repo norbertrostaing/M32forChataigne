@@ -8,6 +8,7 @@ function init() {
 		var n = meters4[i];
 		var p = local.values.getChild("Meters").addFloatParameter(n,n,0,0,1);
 	}
+
 }
 
 var meters4 = [
@@ -61,6 +62,596 @@ function update(deltaTime) {
 function keepAlive() {
 	local.send("/meters", "/meters/4");
 }
+
+
+///  Generic controller
+
+
+function generic_config_name(targetType, targetNumber, value) {
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for config_name");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/config/name", value);
+}
+
+function generic_config_icon(targetType, targetNumber, value) { // // /ch/XX/config/icon int [1...74] (see appendix for a list of icons) 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for config_icon");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/config/icon", value);
+}
+
+function generic_config_color(targetType, targetNumber, value) { // // /ch/XX/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for config_color");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; }
+	local.send("/ch/"+targetNumber+"/config/color", value);
+}
+
+function generic_config_source(targetType, targetNumber, value) { // // /ch/XX/config/source int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for config_source");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/config/source", value);
+}
+
+function generic_delay_on(targetType, targetNumber, value) { // // /ch/XX/delay/on enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for delay_on");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/delay/on", value);
+}
+
+function generic_delay_time(targetType, targetNumber, value) { // // /ch/XX/delay/time linf [0.300, 500.000, 0.100] ms 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for delay_time");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/delay/time", value);
+}
+
+function generic_preamp_trim(targetType, targetNumber, value) { // // /ch/XX/preamp/trim linf [-18.000, 18.000, 0.250] (digital sources only) dB 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for preamp_trim");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/preamp/trim", value);
+}
+
+function generic_preamp_invert(targetType, targetNumber, value) { // // /ch/XX/preamp/invert enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for preamp_invert");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/preamp/invert", value);
+}
+
+function generic_preamp_hpon(targetType, targetNumber, value) { // // /ch/XX/preamp/hpon enum {OFF, ON}Sets Phantom power off or on 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for preamp_hpon");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/preamp/hpon", value);
+}
+
+function generic_preamp_hpslope(targetType, targetNumber, value) { // // /ch/XX/preamp/hpslope enum {12, 18, 24} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for preamp_hpslope");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/preamp/hpslope", value);
+}
+
+function generic_preamp_hpf(targetType, targetNumber, value) { // // /ch/XX/preamp/hpf logf [20.000, 400.000, 101]10Hz 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for preamp_hpf");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/preamp/hpf", value);
+}
+
+function generic_gate_on(targetType, targetNumber, value) { // // /ch/XX/gate/on enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_on");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/on", value);
+}
+
+function generic_gate_mode(targetType, targetNumber, value) { // // /ch/XX/gate/mode enum int [0...4] representing  {EXP2, EXP3, EXP4, GATE, DUCK} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_mode");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/mode", value);
+}
+
+function generic_gate_thr(targetType, targetNumber, value) { // // /ch/XX/gate/thr linf [-80.000, 0.000, 0.500] dB 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_thr");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/thr", value);
+}
+
+function generic_gate_range(targetType, targetNumber, value) { // // /ch/XX/gate/range linf [3.000, 60.000, 1.000] dB 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_range");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/range", value);
+}
+
+function generic_gate_attack(targetType, targetNumber, value) { // // /ch/XX/gate/attack linf [0.000, 120.000, 1.000] ms 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_attack");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/attack", value);
+}
+
+function generic_gate_hold(targetType, targetNumber, value) { // // /ch/XX/gate/hold logf [0.020, 2000, 101]11ms 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_hold");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/hold", value);
+}
+
+function generic_gate_release(targetType, targetNumber, value) { // // /ch/XX/gate/release logf [5.000, 4000.000, 101]12ms 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_release");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/release", value);
+}
+
+function generic_gate_keysrc(targetType, targetNumber, value) { // // /ch/XX/gate/keysrc int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_keysrc");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/keysrc", value);
+}
+
+function generic_gate_filter(targetType, targetNumber, value) { // // /ch/XX/gate/filter/on enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_filter");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/filter/on", value);
+}
+
+function generic_gate_filter(targetType, targetNumber, value) { // // /ch/XX/gate/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_filter");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/filter/type", value);
+}
+
+function generic_gate_filter(targetType, targetNumber, value) { // // /ch/XX/gate/filter/f Logf [20.000, 20000, 201]13Hz 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for gate_filter");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/gate/filter/f", value);
+}
+
+function generic_dyn_on(targetType, targetNumber, value) { // // /ch/XX/dyn/on enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_on");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/on", value);
+}
+
+function generic_dyn_mode(targetType, targetNumber, value) { // // /ch/XX/dyn/mode enum {COMP, EXP} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_mode");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	// /ch/XX/dyn/mode enum {COMP, EXP} 
+	local.send("/ch/"+targetNumber+"/dyn/mode", value);
+}
+
+function generic_dyn_det(targetType, targetNumber, value) { // // /ch/XX/dyn/det enum {PEAK, RMS} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_det");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/det", value);
+}
+
+function generic_dyn_env(targetType, targetNumber, value) { // // /ch/XX/dyn/env enum {LIN, LOG} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_env");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/env", value);
+}
+
+function generic_dyn_thr(targetType, targetNumber, value) { // // /ch/XX/dyn/thr linf [-60.000, 0.000, 0.500] dB 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_thr");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/thr", value);
+}
+
+function generic_dyn_ratio(targetType, targetNumber, value) { // // /ch/XX/dyn/ratio enum int with value [0...11] representing {1.1, 1.3, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10, 20, 100} 10 See Appendix section for detailed values 11 See Appendix section for detailed values 12 See Appendix section for detailed values 13 See Appendix section for detailed values 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_ratio");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/ratio", value);
+}
+
+function generic_dyn_knee(targetType, targetNumber, value) { // // /ch/XX/dyn/knee linf [0.000, 5.000, 1.000] 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_knee");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/knee", value);
+}
+
+function generic_dyn_mgain(targetType, targetNumber, value) { // // /ch/XX/dyn/mgain linf [0.000, 24.000, 0.500] dB 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_mgain");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/mgain", value);
+}
+
+function generic_dyn_attack(targetType, targetNumber, value) { // // /ch/XX/dyn/attack linf [0.000, 120.000, 1.000] ms 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_attack");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/attack", value);
+}
+
+function generic_dyn_hold(targetType, targetNumber, value) { // // /ch/XX/dyn/hold logf [0.020, 2000, 101] ms 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_hold");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/hold", value);
+}
+
+function generic_dyn_release(targetType, targetNumber, value) { // // /ch/XX/dyn/release logf [5.000, 4000.000, 101] ms 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_release");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/release", value);
+}
+
+function generic_dyn_pos(targetType, targetNumber, value) { // // /ch/XX/dyn/pos enum {PRE, POST} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_pos");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/pos", value);
+}
+
+function generic_dyn_keysrc(targetType, targetNumber, value) { // // /ch/XX/dyn/keysrc int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_keysrc");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/keysrc", value);
+}
+
+function generic_dyn_mix(targetType, targetNumber, value) { // // /ch/XX/dyn/mix linf [0, 100, 5] % 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_mix");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/mix", value);
+}
+
+function generic_dyn_auto(targetType, targetNumber, value) { // // /ch/XX/dyn/auto enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_auto");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/auto", value);
+}
+
+function generic_dyn_filter(targetType, targetNumber, value) { // // /ch/XX/dyn/filter/on enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_filter");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/filter/on", value);
+}
+
+function generic_dyn_filter(targetType, targetNumber, value) { // // /ch/XX/dyn/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_filter");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/filter/type", value);
+}
+
+function generic_dyn_filter(targetType, targetNumber, value) { // // /ch/XX/dyn/filter/f logf [20.000, 20000, 201] Hz 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for dyn_filter");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/dyn/filter/f", value);
+}
+
+function generic_insert_on(targetType, targetNumber, value) { // // /ch/XX/insert/on enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for insert_on");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/insert/on", value);
+}
+
+function generic_insert_pos(targetType, targetNumber, value) { // // /ch/XX/insert/pos enum {PRE, POST}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for insert_pos");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/insert/pos", value);
+}
+
+function generic_insert_sel(targetType, targetNumber, value) { // // /ch/XX/insert/sel enum int with value [0...22] representing {OFF, FX1L, FX1R, FX2L, FX2R, FX3L, FX3R, FX4L, FX4R, FX5L, FX5R, FX6L, FX6R, FX7L, FX7R, FX8L, FX8R, AUX1, AUX2, AUX3, AUX4, AUX5, AUX6} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for insert_sel");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/insert/sel", value);
+}
+
+function generic_eq_on(targetType, targetNumber, value) { // // /ch/XX/eq/on enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for eq_on");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/eq/on", value);
+}
+
+function generic_eq_type(targetType, targetNumber, band, value) { // // /ch/XX/eq/1_4/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for eq_type");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; }
+	local.send("/ch/"+targetNumber+"/eq/"+band+"/type", value);
+}
+
+function generic_eq_f(targetType, targetNumber, band, value) { // // /ch/XX/eq/1_4/f logf [20.000, 20000, 201] Hz 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for eq_f");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/eq/"+band+"/f", value);
+}
+
+function generic_eq_g(targetType, targetNumber, band, value) { // // /ch/XX/eq/1_4/g linf [-15.000, 15.000, 0.250] dB 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for eq_g");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/eq/"+band+"/g", value);
+}
+
+function generic_eq_q(targetType, targetNumber, band, value) { // // /ch/XX/eq/1_4/q logf [10.000, 0.3, 72] 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for eq_q");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/eq/"+band+"/q", value);
+}
+
+function generic_mix_on(targetType, targetNumber, value) { // // /ch/XX/mix/on enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_on");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/mix/on", value);
+}
+
+function generic_mix_fader(targetType, targetNumber, value) { // // /ch/XX/mix/fader level [0.0...1.0(+10dB), 1024] dB 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_fader");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/mix/fader", value);
+}
+
+function generic_mix_st(targetType, targetNumber, value) { // // /ch/XX/mix/st enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_st");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/mix/st", value);
+}
+
+function generic_mix_pan(targetType, targetNumber, value) { // // /ch/XX/mix/pan linf [-100.000, 100.000, 2.000] 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_pan");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/mix/pan", value);
+}
+
+function generic_mix_mono(targetType, targetNumber, value) { // // /ch/XX/mix/mono enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_mono");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/mix/mono", value);
+}
+
+function generic_mix_mlevel(targetType, targetNumber, value) { // // /ch/XX/mix/mlevel level [0.0...1.0 (+10 dB), 161] dB 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_mlevel");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	local.send("/ch/"+targetNumber+"/mix/mlevel", value);
+}
+
+function generic_mix_on(targetType, targetNumber, mix, value) { // // /ch/XX/mix/0116/on enum {OFF, ON}
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_on");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	if (mix < 10) {mix = "0"+mix; } 
+	local.send("/ch/"+targetNumber+"/mix/"+mix+"/on", value);
+}
+
+function generic_mix_send_level(targetType, targetNumber, mix, value) { // // /ch/XX/mix/0116/level level [0.0...1.0 (+10 dB), 161] dB 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_send_level");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	if (mix < 10) {mix = "0"+mix; } 
+	local.send("/ch/"+targetNumber+"/mix/"+mix+"/level", value);
+}
+
+function generic_mix_send_pan(targetType, targetNumber, mix, value) { // // /ch/XX/mix/01/pan linf [-100.000, 100.000, 2.000] 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_send_pan");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	if (mix < 10) {mix = "0"+mix; } 
+	local.send("/ch/"+targetNumber+"/mix/"+mix+"/pan", value);
+}
+
+function generic_mix_send_Type(targetType, targetNumber, mix, value) { // // /ch/XX/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP} 
+	var allowedTypes = ["channel"];
+	if (allowedTypes.indexOf(targetType) == -1) {
+		script.log(targetType+" not allowed for mix_send_Type");
+		return;
+	}
+	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
+	if (mix < 10) {mix = "0"+mix; } 
+	local.send("/ch/"+targetNumber+"/mix/"+mix+"/pan", value);
+}
+
 
 
 
@@ -167,17 +758,17 @@ function channel_gate_keysrc(channel, value) { // // /ch/XX/gate/keysrc int int 
 	local.send("/ch/"+channel+"/gate/keysrc", value);
 }
 
-function channel_gate_filter(channel, value) { // // /ch/XX/gate/filter/on enum {OFF, ON}
+function channel_gate_filter_on(channel, value) { // // /ch/XX/gate/filter/on enum {OFF, ON}
 	if (channel < 10) {channel = "0"+channel; } 
 	local.send("/ch/"+channel+"/gate/filter/on", value);
 }
 
-function channel_gate_filter(channel, value) { // // /ch/XX/gate/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
+function channel_gate_filter_type(channel, value) { // // /ch/XX/gate/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
 	if (channel < 10) {channel = "0"+channel; } 
 	local.send("/ch/"+channel+"/gate/filter/type", value);
 }
 
-function channel_gate_filter(channel, value) { // // /ch/XX/gate/filter/f Logf [20.000, 20000, 201]13Hz 
+function channel_gate_filter_f(channel, value) { // // /ch/XX/gate/filter/f Logf [20.000, 20000, 201]13Hz 
 	if (channel < 10) {channel = "0"+channel; } 
 	local.send("/ch/"+channel+"/gate/filter/f", value);
 }
@@ -258,17 +849,17 @@ function channel_dyn_auto(channel, value) { // // /ch/XX/dyn/auto enum {OFF, ON}
 	local.send("/ch/"+channel+"/dyn/auto", value);
 }
 
-function channel_dyn_filter(channel, value) { // // /ch/XX/dyn/filter/on enum {OFF, ON}
+function channel_dyn_filter_on(channel, value) { // // /ch/XX/dyn/filter/on enum {OFF, ON}
 	if (channel < 10) {channel = "0"+channel; } 
 	local.send("/ch/"+channel+"/dyn/filter/on", value);
 }
 
-function channel_dyn_filter(channel, value) { // // /ch/XX/dyn/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
+function channel_dyn_filter_type(channel, value) { // // /ch/XX/dyn/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
 	if (channel < 10) {channel = "0"+channel; } 
 	local.send("/ch/"+channel+"/dyn/filter/type", value);
 }
 
-function channel_dyn_filter(channel, value) { // // /ch/XX/dyn/filter/f logf [20.000, 20000, 201] Hz 
+function channel_dyn_filter_f(channel, value) { // // /ch/XX/dyn/filter/f logf [20.000, 20000, 201] Hz 
 	if (channel < 10) {channel = "0"+channel; } 
 	local.send("/ch/"+channel+"/dyn/filter/f", value);
 }
@@ -367,16 +958,8 @@ function channel_mix_send_Type(channel, mix, value) { // // /ch/XX/mix/01/type e
 	local.send("/ch/"+channel+"/mix/"+mix+"/pan", value);
 }
 
-/* a voir plus tard
-function channel_grp_dca(channel, value) { // // /ch/XX/grp/dca %int [0, 255] (bitmap) 
-	if (channel < 10) {channel = "0"+channel; } 
-	local.send("/ch/"+channel+"/grp/dca", value);
-}
 
-function channel_grp_mute(channel, value) { // // /ch/XX/grp/mute %int [0, 63] (bitmap)
-	if (channel < 10) {channel = "0"+channel; } 
-	local.send("/ch/"+channel+"/grp/mute", value);
-}
+/*
 
 
 /auxin/[01...08]/config/name string [12] 
@@ -418,40 +1001,6 @@ function channel_grp_mute(channel, value) { // // /ch/XX/grp/mute %int [0, 63] (
 /auxin/[01...08]/grp/mute %int [0, 63] (bitmap)
 
 
-/fxrtn/[01...08]/config/name string [12] 
-/fxrtn/[01...08]/config/icon int [1...74] (see appendix for a list of icons) 
-/fxrtn/[01...08]/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
-/fxrtn/[01...08]/eq/on enum {OFF, ON}
-/fxrtn/[01...08]/eq/[1...4]/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut}
-/fxrtn/[01...08]/eq/[1...4]/f logf [20.000, 20000, 201] Hz 
-/fxrtn/[01...08]/eq/[1...4]/g linf [-15.000, 15.000, 0.250] dB 
-/fxrtn/[01...08]/eq/[1...4]/q logf [10.000, 0.3, 72] 
-/fxrtn/[01...08]/mix/on enum {OFF, ON}
-/fxrtn/[01...08]/mix/fader level [0.0...1.0(+10dB), 1024] dB 
-/fxrtn/[01...08]/mix/st enum {OFF, ON}
-/fxrtn/[01...08]/mix/pan linf [-100.000, 100.000, 2.000] dB 
-/fxrtn/[01...08]/mix/mono enum {OFF, ON}
-/fxrtn/[01...08]/mix/mlevel level [0.0...1.0 (+10 dB), 161] dB 
-/fxrtn/[01...08]/mix/[01...16]/on enum {OFF, ON}
-/fxrtn/[01...08]/mix/[01...16]/level level [0.0...1.0 (+10 dB), 161] dB 
-/fxrtn/[01...08]/mix/01/pan linf [-100.000, 100.000, 2.000] 
-/fxrtn/[01...08]/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
-/fxrtn/[01...08]/mix/03/pan linf [-100.000, 100.000, 2.000] 
-/fxrtn/[01...08]/mix/03/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
-/fxrtn/[01...08]/mix/05/pan linf [-100.000, 100.000, 2.000] 
-/fxrtn/[01...08]/mix/05/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
-/fxrtn/[01...08]/mix/07/pan linf [-100.000, 100.000, 2.000] 
-/fxrtn/[01...08]/mix/07/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
-/fxrtn/[01...08]/mix/09/pan linf [-100.000, 100.000, 2.000] 
-/fxrtn/[01...08]/mix/09/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
-/fxrtn/[01...08]/mix/11/pan linf [-100.000, 100.000, 2.000] 
-/fxrtn/[01...08]/mix/11/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
-/fxrtn/[01...08]/mix/13/pan linf [-100.000, 100.000, 2.000] 
-/fxrtn/[01...08]/mix/13/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
-/fxrtn/[01...08]/mix/15/pan linf [-100.000, 100.000, 2.000] 
-/fxrtn/[01...08]/mix/15/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP}
-/fxrtn/[01...08]/grp/dca %int [0, 255] (bitmap) 
-/fxrtn/[01...08]/grp/mute %int [0, 63] (bitmap) 
 
 
 /bus/[01...16]/config/name string [12] 
@@ -535,43 +1084,119 @@ function channel_grp_mute(channel, value) { // // /ch/XX/grp/mute %int [0, 63] (
 
 
 /main/st/config/name string [12] 
+ /main/m/config/name string [12] 
+
 /main/st/config/icon Int [1...74] (see appendix for a list of icons) 
+ /main/m/config/icon Int [1...74] (see appendix for a list of icons) 
+
 /main/st/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
+ /main/m/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi}
+
 /main/st/dyn/on enum {OFF, ON}
+ /main/m/dyn/on enum {OFF, ON}
+
 /main/st/dyn/mode enum {COMP, EXP}
+ /main/m/dyn/mode enum {COMP, EXP}
+
 /main/st/dyn/det enum {PEAK, RMS}
+ /main/m/dyn/det enum {PEAK, RMS}
+
 /main/st/dyn/env enum {LIN, LOG}
+ /main/m/dyn/env enum {LIN, LOG}
+
 /main/st/dyn/thr linf [-60.000, 0.000, 0.500] dB 
+ /main/m/dyn/thr linf [-60.000, 0.000, 0.500] dB 
+
 /main/st/dyn/ratio enum int with value [0...11] representing {1.1, 1.3, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10, 20, 100}
+ /main/m/dyn/ratio enum int with value [0...11] representing {1.1, 1.3, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10, 20, 100}
+
 /main/st/dyn/knee linf [0.000, 5.000, 1.000] 
+ /main/m/dyn/knee linf [0.000, 5.000, 1.000] 
+
 /main/st/dyn/mgain linf [0.000, 24.000, 0.500] dB 
+ /main/m/dyn/mgain linf [0.000, 24.000, 0.500] dB 
+
 /main/st/dyn/attack linf [0.000, 120.000, 1.000] ms 
+ /main/m/dyn/attack linf [0.000, 120.000, 1.000] ms 
+
 /main/st/dyn/hold logf [0.020, 2000, 101] ms 
+ /main/m/dyn/hold logf [0.020, 2000, 101] ms 
+
 /main/st/dyn/release logf [5.000, 4000.000, 101] ms 
+ /main/m/dyn/release logf [5.000, 4000.000, 101] ms 
+
 /main/st/dyn/pos enum {PRE, POST}
+ /main/m/dyn/pos enum {PRE, POST}
+
 /main/st/dyn/mix linf [0, 100, 5] % 
+ /main/m/dyn/mix linf [0, 100, 5] % 
+
 /main/st/dyn/auto17enum {OFF, ON}
+ /main/m/dyn/auto18enum {OFF, ON}
+
 /main/st/dyn/filter/on enum {OFF, ON}
+ /main/m/dyn/filter/on enum {OFF, ON}
+
 /main/st/dyn/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0}
+ /main/m/dyn/filter/type enum int with value [0, 8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0}
+
 /main/st/dyn/filter/f logf [20.000, 20000, 201] Hz 
+ /main/m/dyn/filter/f logf [20.000, 20000, 201] Hz 
+
 /main/st/insert/on enum {OFF, ON}
+ /main/m/insert/on enum {OFF, ON}
+
 /main/st/insert/pos enum {PRE, POST}
+ /main/m/insert/pos enum {PRE, POST}
+
 /main/st/insert/sel enum int with value [0...22] representing {OFF, FX1L, FX1R, FX2L, FX2R, FX3L, FX3R, FX4L, FX4R, FX5L, FX5R, FX6L, FX6R, FX7L, FX7R, FX8L, FX8R, AUX1, AUX2, AUX3, AUX4, AUX5, AUX6}
+ /main/m/insert/sel enum int with value [0...22] representing {OFF, FX1L, FX1R, FX2L, FX2R, FX3L, FX3R, FX4L, FX4R, FX5L, FX5R, FX6L, FX6R, FX7L, FX7R, FX8L, FX8R, AUX1, AUX2, AUX3, AUX4, AUX5, AUX6} 
+
 /main/st/eq/on enum {OFF, ON}
+ /main/m/eq/on enum {OFF, ON}
+
 /main/st/eq/[1...6]/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut}
+ /main/m/eq/[1...6]/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut}
+
 /main/st/eq/[1...6]/f logf [20.000, 20000, 201] Hz 
+ /main/m/eq/[1...6]/f logf [20.000, 20000, 201] Hz 
+
 /main/st/eq/[1...6]/g linf [-15.000, 15.000, 0.250] dB 
+ /main/m/eq/[1...6]/g linf [-15.000, 15.000, 0.250] dB 
+
 /main/st/eq/[1...6]/q logf [10.000, 0.3, 72] 
+ /main/m/eq/[1...6]/q logf [10.000, 0.3, 72] 
+
 /main/st/mix/on enum {OFF, ON}
+ /main/m/mix/on enum {OFF, ON}
+
 /main/st/mix/fader level [0.0...1.0(+10dB), 1024] dB 
+ /main/m/mix/fader level [0.0...1.0(+10dB), 1024] dB 
+
 /main/st/mix/pan linf [-100.000, 100.000, 2.000] 
+ /main/m/mix/[01...06]/on enum {OFF, ON}
+
 /main/st/mix/[01...06]/on enum {OFF, ON}17 This command is available starting with FW 2.10 
+ /main/m/mix/[01...06]/level level [0.0...1.0(+10dB), 161] dB 18 This command is available starting with FW 2.10 
+
 /main/st/mix/[01...06]/level level [0.0...1.0(+10dB), 161] dB 
+ /main/m/mix/01/pan linf [-100.000, 100.000, 2.000] 
+
 /main/st/mix/01/pan linf [-100.000, 100.000, 2.000] 
+ /main/m/mix/03/pan linf [-100.000, 100.000, 2.000] 
+
 /main/st/mix/03/pan linf [-100.000, 100.000, 2.000] 
+ /main/m/mix/05/pan linf [-100.000, 100.000, 2.000] 
+
 /main/st/mix/05/pan linf [-100.000, 100.000, 2.000] 
+ /main/m/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+
 /main/st/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+ /main/m/mix/03/ type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+
 /main/st/mix/03/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+ /main/m/mix/05/ type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
+
 /main/st/mix/05/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST }
 
 

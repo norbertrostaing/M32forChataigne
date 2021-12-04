@@ -11,13 +11,13 @@
 	"hasInput": false,
 	"hasOutput": false, 
 
-	"hideDefaultCommands": true,
+	"hideDefaultCommands": false,
 	"hideDefaultParameters": [
 	],
 
 	"defaults": {
-		"OSC Outputs": {
-			"OSC Output": {
+		"oscOutputs": {
+			"oscOutput": {
 				"local" : false,
 				"remotePort" : 10023,			
 				"listenToFeedback":true
@@ -37,10 +37,21 @@
 	
 	"commands": {
 		
-		"channel_config_name" : {
-			"menu" : "channel",
-			"callback" : "channel_config_name",
+		"config_name" : {
+			"menu" : "Generic",
+			"callback" : "generic_config_name",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx",
+						"DCA" : "dca"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -54,10 +65,21 @@
 			}
 		},
 
-		"channel_config_icon" : {
-			"menu" : "channel",
-			"callback" : "channel_config_icon",
+		"config_icon" : {
+			"menu" : "Generic",
+			"callback" : "generic_config_icon",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx",
+						"DCA" : "dca"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -75,10 +97,21 @@
 			}
 		},
 
-		"channel_config_color" : {
-			"menu" : "channel",
-			"callback" : "channel_config_color",
+		"config_color" : {
+			"menu" : "Generic",
+			"callback" : "generic_config_color",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx",
+						"DCA" : "dca"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -111,10 +144,17 @@
 		},
 
 
-		"channel_config_source" : {
-			"menu" : "channel",
-			"callback" : "channel_config_source",
+		"config_source" : {
+			"menu" : "Generic",
+			"callback" : "generic_config_source",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -195,10 +235,16 @@
 			}
 		},
 
-		"channel_delay_on" : {
-			"menu" : "channel",
-			"callback" : "channel_delay_on",
+		"delay_on" : {
+			"menu" : "Generic",
+			"callback" : "generic_delay_on",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -216,10 +262,16 @@
 			}
 		},
 
-		"channel_delay_time" : {
-			"menu" : "channel",
-			"callback" : "channel_delay_time",
+		"delay_time" : {
+			"menu" : "Generic",
+			"callback" : "generic_delay_time",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -237,10 +289,17 @@
 			}
 		},
 
-		"channel_preamp_trim" : {
-			"menu" : "channel",
-			"callback" : "channel_preamp_trim",
+		"preamp_trim" : {
+			"menu" : "Generic",
+			"callback" : "generic_preamp_trim",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -258,10 +317,18 @@
 			}
 		},
 
-		"channel_preamp_invert" : {
-			"menu" : "channel",
-			"callback" : "channel_preamp_invert",
+		"preamp_invert" : {
+			"menu" : "Generic",
+			"callback" : "generic_preamp_invert",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -279,10 +346,16 @@
 			}
 		},
 
-		"channel_preamp_hpon" : {
-			"menu" : "channel",
-			"callback" : "channel_preamp_hpon",
+		"preamp_hpon" : {
+			"menu" : "Generic",
+			"callback" : "generic_preamp_hpon",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -300,10 +373,16 @@
 			}
 		},
 
-		"channel_preamp_hpslope" : {
-			"menu" : "channel",
-			"callback" : "channel_preamp_hpslope",
+		"preamp_hpslope" : {
+			"menu" : "Generic",
+			"callback" : "generic_preamp_hpslope",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -322,10 +401,16 @@
 			}
 		},
 
-		"channel_preamp_hpf" : {
-			"menu" : "channel",
-			"callback" : "channel_preamp_hpf",
+		"preamp_hpf" : {
+			"menu" : "Generic",
+			"callback" : "generic_preamp_hpf",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -343,10 +428,16 @@
 			}
 		},
 
-		"channel_gate_on" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_on",
+		"gate_on" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_on",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -364,10 +455,16 @@
 			}
 		},
 
-		"channel_gate_mode" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_mode",
+		"gate_mode" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_mode",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -388,10 +485,16 @@
 			}
 		},
 
-		"channel_gate_thr" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_thr",
+		"gate_thr" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_thr",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -409,10 +512,16 @@
 			}
 		},
 
-		"channel_gate_range" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_range",
+		"gate_range" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_range",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -430,10 +539,16 @@
 			}
 		},
 
-		"channel_gate_attack" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_attack",
+		"gate_attack" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_attack",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -451,10 +566,16 @@
 			}
 		},
 
-		"channel_gate_hold" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_hold",
+		"gate_hold" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_hold",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -472,10 +593,16 @@
 			}
 		},
 
-		"channel_gate_release" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_release",
+		"gate_release" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_release",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -493,10 +620,16 @@
 			}
 		},
 
-		"channel_gate_keysrc" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_keysrc",
+		"gate_keysrc" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_keysrc",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -577,10 +710,16 @@
 			}
 		},
 
-		"channel_gate_filter" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_filter",
+		"gate_filter_on" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_filter_on",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -598,10 +737,16 @@
 			}
 		},
 
-		"channel_gate_filter" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_filter",
+		"gate_filter_type" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_filter_type",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -626,10 +771,16 @@
 			}
 		},
 
-		"channel_gate_filter" : {
-			"menu" : "channel",
-			"callback" : "channel_gate_filter",
+		"gate_filter_f" : {
+			"menu" : "Generic",
+			"callback" : "generic_gate_filter",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -647,10 +798,18 @@
 			}
 		},
 
-		"channel_dyn_on" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_on",
+		"dyn_on" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_on",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -668,10 +827,18 @@
 			}
 		},
 
-		"channel_dyn_mode" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_mode",
+		"dyn_mode" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_mode",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -689,10 +856,18 @@
 			}
 		},
 
-		"channel_dyn_det" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_det",
+		"dyn_det" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_det",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -710,10 +885,18 @@
 			}
 		},
 
-		"channel_dyn_env" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_env",
+		"dyn_env" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_env",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -731,10 +914,18 @@
 			}
 		},
 
-		"channel_dyn_thr" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_thr",
+		"dyn_thr" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_thr",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -752,10 +943,18 @@
 			}
 		},
 
-		"channel_dyn_ratio" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_ratio",
+		"dyn_ratio" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_ratio",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -783,10 +982,18 @@
 			}
 		},
 
-		"channel_dyn_knee" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_knee",
+		"dyn_knee" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_knee",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -804,10 +1011,18 @@
 			}
 		},
 
-		"channel_dyn_mgain" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_mgain",
+		"dyn_mgain" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_mgain",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -825,10 +1040,18 @@
 			}
 		},
 
-		"channel_dyn_attack" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_attack",
+		"dyn_attack" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_attack",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -846,10 +1069,18 @@
 			}
 		},
 
-		"channel_dyn_hold" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_hold",
+		"dyn_hold" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_hold",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -867,10 +1098,18 @@
 			}
 		},
 
-		"channel_dyn_release" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_release",
+		"dyn_release" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_release",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -888,10 +1127,18 @@
 			}
 		},
 
-		"channel_dyn_pos" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_pos",
+		"dyn_pos" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_pos",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -909,10 +1156,17 @@
 			}
 		},
 
-		"channel_dyn_keysrc" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_keysrc",
+		"dyn_keysrc" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_keysrc",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -993,10 +1247,18 @@
 			}
 		},
 
-		"channel_dyn_mix" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_mix",
+		"dyn_mix" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_mix",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1014,10 +1276,18 @@
 			}
 		},
 
-		"channel_dyn_auto" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_auto",
+		"dyn_auto" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_auto",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1035,10 +1305,18 @@
 			}
 		},
 
-		"channel_dyn_filter" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_filter",
+		"dyn_filter_on" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_filter_on",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1056,10 +1334,18 @@
 			}
 		},
 
-		"channel_dyn_filter" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_filter",
+		"dyn_filter_type" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_filter_type",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1084,10 +1370,18 @@
 			}
 		},
 
-		"channel_dyn_filter" : {
-			"menu" : "channel",
-			"callback" : "channel_dyn_filter",
+		"dyn_filter_f" : {
+			"menu" : "Generic",
+			"callback" : "generic_dyn_filter_f",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1105,10 +1399,18 @@
 			}
 		},
 
-		"channel_insert_on" : {
-			"menu" : "channel",
-			"callback" : "channel_insert_on",
+		"insert_on" : {
+			"menu" : "Generic",
+			"callback" : "generic_insert_on",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1126,10 +1428,18 @@
 			}
 		},
 
-		"channel_insert_pos" : {
-			"menu" : "channel",
-			"callback" : "channel_insert_pos",
+		"insert_pos" : {
+			"menu" : "Generic",
+			"callback" : "generic_insert_pos",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1147,10 +1457,18 @@
 			}
 		},
 
-		"channel_insert_sel" : {
-			"menu" : "channel",
-			"callback" : "channel_insert_sel",
+		"insert_sel" : {
+			"menu" : "Generic",
+			"callback" : "generic_insert_sel",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1191,10 +1509,20 @@
 			}
 		},
 
-		"channel_eq_on" : {
-			"menu" : "channel",
-			"callback" : "channel_eq_on",
+		"eq_on" : {
+			"menu" : "Generic",
+			"callback" : "generic_eq_on",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1212,10 +1540,20 @@
 			}
 		},
 
-		"channel_eq_type" : {
-			"menu" : "channel",
-			"callback" : "channel_eq_type",
+		"eq_type" : {
+			"menu" : "Generic",
+			"callback" : "generic_eq_type",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1237,10 +1575,20 @@
 			}
 		},
 
-		"channel_eq_f" : {
-			"menu" : "channel",
-			"callback" : "channel_eq_f",
+		"eq_f" : {
+			"menu" : "Generic",
+			"callback" : "generic_eq_f",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1258,10 +1606,20 @@
 			}
 		},
 
-		"channel_eq_g" : {
-			"menu" : "channel",
-			"callback" : "channel_eq_g",
+		"eq_g" : {
+			"menu" : "Generic",
+			"callback" : "generic_eq_g",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1279,10 +1637,20 @@
 			}
 		},
 
-		"channel_eq_q" : {
-			"menu" : "channel",
-			"callback" : "channel_eq_q",
+		"eq_q" : {
+			"menu" : "Generic",
+			"callback" : "generic_eq_q",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1300,10 +1668,21 @@
 			}
 		},
 
-		"channel_mix_on" : {
-			"menu" : "channel",
-			"callback" : "channel_mix_on",
+		"mix_on" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_on",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx",
+						"DCA" : "dca"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1321,10 +1700,21 @@
 			}
 		},
 
-		"channel_mix_fader" : {
-			"menu" : "channel",
-			"callback" : "channel_mix_fader",
+		"mix_fader" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_fader",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus",
+						"Matrix" : "mtx",
+						"DCA" : "dca"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1342,10 +1732,19 @@
 			}
 		},
 
-		"channel_mix_st" : {
-			"menu" : "channel",
-			"callback" : "channel_mix_st",
+		"mix_st" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_st",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1363,10 +1762,19 @@
 			}
 		},
 
-		"channel_mix_pan" : {
-			"menu" : "channel",
-			"callback" : "channel_mix_pan",
+		"mix_pan" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_pan",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1384,10 +1792,19 @@
 			}
 		},
 
-		"channel_mix_mono" : {
-			"menu" : "channel",
-			"callback" : "channel_mix_mono",
+		"mix_mono" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_mono",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1405,10 +1822,19 @@
 			}
 		},
 
-		"channel_mix_mlevel" : {
-			"menu" : "channel",
-			"callback" : "channel_mix_mlevel",
+		"mix_mlevel" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_mlevel",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1426,10 +1852,19 @@
 			}
 		},
 
-		"channel mix fader" : {
-			"menu" : "channel",
-			"callback" : "channel",
+		"mix_send_on" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_on",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1437,25 +1872,48 @@
 					"max":32,
 					"useForMapping": true
 				}, 
+				"Mix": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":16,
+					"useForMapping": true
+				}, 
 				"Value": {
 					"type": "Enum",
-					"options" : {
-						"Off" : 0,
+					"options": {
 						"On" : 1,
+						"Off" : 0
 					}
 				}, 
 			}
 		},
 
-		"channel_mix_send_level" : {
-			"menu" : "channel",
-			"callback" : "channel_mix_send_level",
+		"mix_send_level" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_send_level",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
 					"min":1,
 					"max":32,
+					"useForMapping": true
+				}, 
+				"Mix": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":16,
 					"useForMapping": true
 				}, 
 				"Value": {
@@ -1468,10 +1926,19 @@
 			}
 		},
 
-		"channel_mix_send_pan" : {
-			"menu" : "channel",
-			"callback" : "channel_mix_send_pan",
+		"mix_send_pan" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_send_pan",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1479,6 +1946,19 @@
 					"max":32,
 					"useForMapping": true
 				}, 
+				"Mix": {
+					"type":"Enum",
+					"option":{
+						"01-02" : "01",
+						"03-04" : "03",
+						"05-06" : "05",
+						"07-08" : "07",
+						"09-10" : "09",
+						"11-12" : "11",
+						"13-14" : "13",
+						"15-16" : "15"
+					}
+				},
 				"Value": {
 					"type": "Float",
 					"default": 0, 
@@ -1489,10 +1969,19 @@
 			}
 		},
 
-		"channel_mix_send_Type" : {
-			"menu" : "channel",
-			"callback" : "channel_mix_send_Type",
+		"mix_send_Type" : {
+			"menu" : "Generic",
+			"callback" : "generic_mix_send_Type",
 			"parameters" : {
+				"Target type" : {
+					"type":"Enum",
+					"options": {
+						"Channel" : "ch",
+						"Aux in" : "auxin",
+						"FX return" : "fxrtn",
+						"Bus" : "bus"
+					}
+				},
 				"Channel": {
 					"type": "Integer",
 					"default": 1, 
@@ -1500,6 +1989,19 @@
 					"max":32,
 					"useForMapping": true
 				}, 
+				"Mix": {
+					"type":"Enum",
+					"option":{
+						"01-02" : "01",
+						"03-04" : "03",
+						"05-06" : "05",
+						"07-08" : "07",
+						"09-10" : "09",
+						"11-12" : "11",
+						"13-14" : "13",
+						"15-16" : "15"
+					}
+				},
 				"Value": {
 					"type": "Enum",
 					"options" : {
