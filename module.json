@@ -16,8 +16,8 @@
 	],
 
 	"defaults": {
-		"oscOutputs": {
-			"oscOutput": {
+		"OSC Outputs": {
+			"OSC Output": {
 				"local" : false,
 				"remotePort" : 10023,			
 				"listenToFeedback":true
