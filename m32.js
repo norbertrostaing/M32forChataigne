@@ -69,297 +69,297 @@ function keepAlive() {
 
 function generic_config_name(targetType, targetNumber, value) {
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/config/name", value);
+	local.send("/"+targetType+"/"+targetNumber+"/config/name", value);
 }
 
 function generic_config_icon(targetType, targetNumber, value) { // // /ch/XX/config/icon int [1...74] (see appendix for a list of icons) 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/config/icon", value);
+	local.send("/"+targetType+"/"+targetNumber+"/config/icon", value);
 }
 
 function generic_config_color(targetType, targetNumber, value) { // // /ch/XX/config/color enum int with value [0...15] representing {OFF, RD, GN, YE, BL, MG, CY, WH, OFFi, RDi, GNi, YEi, BLi, MGi, CYi, WHi} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; }
-	local.send("/ch/"+targetNumber+"/config/color", value);
+	local.send("/"+targetType+"/"+targetNumber+"/config/color", value);
 }
 
 function generic_config_source(targetType, targetNumber, value) { // // /ch/XX/config/source int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/config/source", value);
+	local.send("/"+targetType+"/"+targetNumber+"/config/source", value);
 }
 
 function generic_delay_on(targetType, targetNumber, value) { // // /ch/XX/delay/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/delay/on", value);
+	local.send("/"+targetType+"/"+targetNumber+"/delay/on", value);
 }
 
 function generic_delay_time(targetType, targetNumber, value) { // // /ch/XX/delay/time linf [0.300, 500.000, 0.100] ms 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/delay/time", value);
+	local.send("/"+targetType+"/"+targetNumber+"/delay/time", value);
 }
 
 function generic_preamp_trim(targetType, targetNumber, value) { // // /ch/XX/preamp/trim linf [-18.000, 18.000, 0.250] (digital sources only) dB 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/preamp/trim", value);
+	local.send("/"+targetType+"/"+targetNumber+"/preamp/trim", value);
 }
 
 function generic_preamp_invert(targetType, targetNumber, value) { // // /ch/XX/preamp/invert enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/preamp/invert", value);
+	local.send("/"+targetType+"/"+targetNumber+"/preamp/invert", value);
 }
 
 function generic_preamp_hpon(targetType, targetNumber, value) { // // /ch/XX/preamp/hpon enum {OFF, ON}Sets Phantom power off or on 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/preamp/hpon", value);
+	local.send("/"+targetType+"/"+targetNumber+"/preamp/hpon", value);
 }
 
 function generic_preamp_hpslope(targetType, targetNumber, value) { // // /ch/XX/preamp/hpslope enum {12, 18, 24} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/preamp/hpslope", value);
+	local.send("/"+targetType+"/"+targetNumber+"/preamp/hpslope", value);
 }
 
 function generic_preamp_hpf(targetType, targetNumber, value) { // // /ch/XX/preamp/hpf logf [20.000, 400.000, 101]10Hz 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/preamp/hpf", value);
+	local.send("/"+targetType+"/"+targetNumber+"/preamp/hpf", value);
 }
 
 function generic_gate_on(targetType, targetNumber, value) { // // /ch/XX/gate/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/on", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/on", value);
 }
 
 function generic_gate_mode(targetType, targetNumber, value) { // // /ch/XX/gate/mode enum int [0...4] representing  {EXP2, EXP3, EXP4, GATE, DUCK} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/mode", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/mode", value);
 }
 
 function generic_gate_thr(targetType, targetNumber, value) { // // /ch/XX/gate/thr linf [-80.000, 0.000, 0.500] dB 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/thr", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/thr", value);
 }
 
 function generic_gate_range(targetType, targetNumber, value) { // // /ch/XX/gate/range linf [3.000, 60.000, 1.000] dB 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/range", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/range", value);
 }
 
 function generic_gate_attack(targetType, targetNumber, value) { // // /ch/XX/gate/attack linf [0.000, 120.000, 1.000] ms 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/attack", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/attack", value);
 }
 
 function generic_gate_hold(targetType, targetNumber, value) { // // /ch/XX/gate/hold logf [0.020, 2000, 101]11ms 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/hold", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/hold", value);
 }
 
 function generic_gate_release(targetType, targetNumber, value) { // // /ch/XX/gate/release logf [5.000, 4000.000, 101]12ms 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/release", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/release", value);
 }
 
 function generic_gate_keysrc(targetType, targetNumber, value) { // // /ch/XX/gate/keysrc int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/keysrc", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/keysrc", value);
 }
 
 function generic_gate_filter(targetType, targetNumber, value) { // // /ch/XX/gate/filter/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/filter/on", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/filter/on", value);
 }
 
 function generic_gate_filter(targetType, targetNumber, value) { // // /ch/XX/gate/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/filter/type", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/filter/type", value);
 }
 
 function generic_gate_filter(targetType, targetNumber, value) { // // /ch/XX/gate/filter/f Logf [20.000, 20000, 201]13Hz 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/gate/filter/f", value);
+	local.send("/"+targetType+"/"+targetNumber+"/gate/filter/f", value);
 }
 
 function generic_dyn_on(targetType, targetNumber, value) { // // /ch/XX/dyn/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/on", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/on", value);
 }
 
 function generic_dyn_mode(targetType, targetNumber, value) { // // /ch/XX/dyn/mode enum {COMP, EXP} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
 	// /ch/XX/dyn/mode enum {COMP, EXP} 
-	local.send("/ch/"+targetNumber+"/dyn/mode", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/mode", value);
 }
 
 function generic_dyn_det(targetType, targetNumber, value) { // // /ch/XX/dyn/det enum {PEAK, RMS} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/det", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/det", value);
 }
 
 function generic_dyn_env(targetType, targetNumber, value) { // // /ch/XX/dyn/env enum {LIN, LOG} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/env", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/env", value);
 }
 
 function generic_dyn_thr(targetType, targetNumber, value) { // // /ch/XX/dyn/thr linf [-60.000, 0.000, 0.500] dB 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/thr", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/thr", value);
 }
 
 function generic_dyn_ratio(targetType, targetNumber, value) { // // /ch/XX/dyn/ratio enum int with value [0...11] representing {1.1, 1.3, 1.5, 2.0, 2.5, 3.0, 4.0, 5.0, 7.0, 10, 20, 100} 10 See Appendix section for detailed values 11 See Appendix section for detailed values 12 See Appendix section for detailed values 13 See Appendix section for detailed values 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/ratio", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/ratio", value);
 }
 
 function generic_dyn_knee(targetType, targetNumber, value) { // // /ch/XX/dyn/knee linf [0.000, 5.000, 1.000] 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/knee", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/knee", value);
 }
 
 function generic_dyn_mgain(targetType, targetNumber, value) { // // /ch/XX/dyn/mgain linf [0.000, 24.000, 0.500] dB 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/mgain", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/mgain", value);
 }
 
 function generic_dyn_attack(targetType, targetNumber, value) { // // /ch/XX/dyn/attack linf [0.000, 120.000, 1.000] ms 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/attack", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/attack", value);
 }
 
 function generic_dyn_hold(targetType, targetNumber, value) { // // /ch/XX/dyn/hold logf [0.020, 2000, 101] ms 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/hold", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/hold", value);
 }
 
 function generic_dyn_release(targetType, targetNumber, value) { // // /ch/XX/dyn/release logf [5.000, 4000.000, 101] ms 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/release", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/release", value);
 }
 
 function generic_dyn_pos(targetType, targetNumber, value) { // // /ch/XX/dyn/pos enum {PRE, POST} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/pos", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/pos", value);
 }
 
 function generic_dyn_keysrc(targetType, targetNumber, value) { // // /ch/XX/dyn/keysrc int int with value [0...64] representing {OFF, In01...32, Aux 1...6, USB L, USB R,  Fx 1L...Fx 4R, Bus 01...16} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/keysrc", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/keysrc", value);
 }
 
 function generic_dyn_mix(targetType, targetNumber, value) { // // /ch/XX/dyn/mix linf [0, 100, 5] % 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/mix", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/mix", value);
 }
 
 function generic_dyn_auto(targetType, targetNumber, value) { // // /ch/XX/dyn/auto enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/auto", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/auto", value);
 }
 
 function generic_dyn_filter(targetType, targetNumber, value) { // // /ch/XX/dyn/filter/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/filter/on", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/filter/on", value);
 }
 
 function generic_dyn_filter(targetType, targetNumber, value) { // // /ch/XX/dyn/filter/type enum int with value [0...8] representing Keysolo (Solo/Q) {LC6, LC12, HC6, HC12, 1.0, 2.0, 3.0, 5.0, 10.0} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/filter/type", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/filter/type", value);
 }
 
 function generic_dyn_filter(targetType, targetNumber, value) { // // /ch/XX/dyn/filter/f logf [20.000, 20000, 201] Hz 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/dyn/filter/f", value);
+	local.send("/"+targetType+"/"+targetNumber+"/dyn/filter/f", value);
 }
 
 function generic_insert_on(targetType, targetNumber, value) { // // /ch/XX/insert/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/insert/on", value);
+	local.send("/"+targetType+"/"+targetNumber+"/insert/on", value);
 }
 
 function generic_insert_pos(targetType, targetNumber, value) { // // /ch/XX/insert/pos enum {PRE, POST}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/insert/pos", value);
+	local.send("/"+targetType+"/"+targetNumber+"/insert/pos", value);
 }
 
 function generic_insert_sel(targetType, targetNumber, value) { // // /ch/XX/insert/sel enum int with value [0...22] representing {OFF, FX1L, FX1R, FX2L, FX2R, FX3L, FX3R, FX4L, FX4R, FX5L, FX5R, FX6L, FX6R, FX7L, FX7R, FX8L, FX8R, AUX1, AUX2, AUX3, AUX4, AUX5, AUX6} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/insert/sel", value);
+	local.send("/"+targetType+"/"+targetNumber+"/insert/sel", value);
 }
 
 function generic_eq_on(targetType, targetNumber, value) { // // /ch/XX/eq/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/eq/on", value);
+	local.send("/"+targetType+"/"+targetNumber+"/eq/on", value);
 }
 
 function generic_eq_type(targetType, targetNumber, band, value) { // // /ch/XX/eq/1_4/type enum int [0...5] representing  {LCut, LShv, PEQ, VEQ, HShv, HCut} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; }
-	local.send("/ch/"+targetNumber+"/eq/"+band+"/type", value);
+	local.send("/"+targetType+"/"+targetNumber+"/eq/"+band+"/type", value);
 }
 
 function generic_eq_f(targetType, targetNumber, band, value) { // // /ch/XX/eq/1_4/f logf [20.000, 20000, 201] Hz 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/eq/"+band+"/f", value);
+	local.send("/"+targetType+"/"+targetNumber+"/eq/"+band+"/f", value);
 }
 
 function generic_eq_g(targetType, targetNumber, band, value) { // // /ch/XX/eq/1_4/g linf [-15.000, 15.000, 0.250] dB 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/eq/"+band+"/g", value);
+	local.send("/"+targetType+"/"+targetNumber+"/eq/"+band+"/g", value);
 }
 
 function generic_eq_q(targetType, targetNumber, band, value) { // // /ch/XX/eq/1_4/q logf [10.000, 0.3, 72] 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/eq/"+band+"/q", value);
+	local.send("/"+targetType+"/"+targetNumber+"/eq/"+band+"/q", value);
 }
 
 function generic_mix_on(targetType, targetNumber, value) { // // /ch/XX/mix/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/mix/on", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/on", value);
 }
 
 function generic_mix_fader(targetType, targetNumber, value) { // // /ch/XX/mix/fader level [0.0...1.0(+10dB), 1024] dB 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/mix/fader", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/fader", value);
 }
 
 function generic_mix_st(targetType, targetNumber, value) { // // /ch/XX/mix/st enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/mix/st", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/st", value);
 }
 
 function generic_mix_pan(targetType, targetNumber, value) { // // /ch/XX/mix/pan linf [-100.000, 100.000, 2.000] 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/mix/pan", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/pan", value);
 }
 
 function generic_mix_mono(targetType, targetNumber, value) { // // /ch/XX/mix/mono enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/mix/mono", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/mono", value);
 }
 
 function generic_mix_mlevel(targetType, targetNumber, value) { // // /ch/XX/mix/mlevel level [0.0...1.0 (+10 dB), 161] dB 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
-	local.send("/ch/"+targetNumber+"/mix/mlevel", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/mlevel", value);
 }
 
 function generic_mix_on(targetType, targetNumber, mix, value) { // // /ch/XX/mix/0116/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
 	if (mix < 10) {mix = "0"+mix; } 
-	local.send("/ch/"+targetNumber+"/mix/"+mix+"/on", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/"+mix+"/on", value);
 }
 
 function generic_mix_send_level(targetType, targetNumber, mix, value) { // // /ch/XX/mix/0116/level level [0.0...1.0 (+10 dB), 161] dB 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
 	if (mix < 10) {mix = "0"+mix; } 
-	local.send("/ch/"+targetNumber+"/mix/"+mix+"/level", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/"+mix+"/level", value);
 }
 
 function generic_mix_send_pan(targetType, targetNumber, mix, value) { // // /ch/XX/mix/01/pan linf [-100.000, 100.000, 2.000] 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
 	if (mix < 10) {mix = "0"+mix; } 
-	local.send("/ch/"+targetNumber+"/mix/"+mix+"/pan", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/"+mix+"/pan", value);
 }
 
 function generic_mix_send_Type(targetType, targetNumber, mix, value) { // // /ch/XX/mix/01/type enum int [0...5] representing  {IN/LC, <-EQ, EQ->, PRE, POST, GRP} 
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
 	if (mix < 10) {mix = "0"+mix; } 
-	local.send("/ch/"+targetNumber+"/mix/"+mix+"/pan", value);
+	local.send("/"+targetType+"/"+targetNumber+"/mix/"+mix+"/pan", value);
 }
 
 
