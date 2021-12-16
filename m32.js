@@ -1,5 +1,12 @@
 // using https://wiki.munichmakerlab.de/images/1/17/UNOFFICIAL_X32_OSC_REMOTE_PROTOCOL_(1).pdf
+/*
 
+L'essentiel fonctionne !
+Les DCA, je n'ai pas de réponses, et la commande "mix on" ne fonctionne pas  quelque que soit le layer.
+J'espère que nos échanges t'ont aidé à améliorer le module.
+En tout cas, du beau boulot, bravo !
+
+*/
 var myParameters = {};
 
 function init() {

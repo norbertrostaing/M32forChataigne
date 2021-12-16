@@ -1561,6 +1561,13 @@
 					"max":32,
 					"useForMapping": true
 				}, 
+				"Band": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":4,
+					"useForMapping": true
+				}, 
 				"Value": {
 					"type": "Enum",
 					"options" : {
@@ -1596,6 +1603,13 @@
 					"max":32,
 					"useForMapping": true
 				}, 
+				"Band": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":4,
+					"useForMapping": true
+				}, 
 				"Value": {
 					"type": "Float",
 					"default": 0, 
@@ -1627,6 +1641,13 @@
 					"max":32,
 					"useForMapping": true
 				}, 
+				"Band": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":4,
+					"useForMapping": true
+				}, 
 				"Value": {
 					"type": "Float",
 					"default": 0, 
@@ -1656,6 +1677,13 @@
 					"default": 1, 
 					"min":1,
 					"max":32,
+					"useForMapping": true
+				}, 
+				"Band": {
+					"type": "Integer",
+					"default": 1, 
+					"min":1,
+					"max":4,
 					"useForMapping": true
 				}, 
 				"Value": {
