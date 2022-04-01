@@ -8,14 +8,18 @@ En tout cas, du beau boulot, bravo !
 
 */
 var myParameters = {};
+var paramUseMeters;
+var paramUseControls;
 
 function init() {
 	local.values.addContainer("Meters");
+	local.values.addContainer("UI");
+	paramUseMeters = local.parameters.addBoolParameter("Use Meters", "Ask the console to send meters to chataigne" , false);
+	paramUseControls = local.parameters.addBoolParameter("Use Control Feedback", "Ask the console to send control values to chataigne", false);
 	for (var i = 0; i < meters4.length; i++) {
 		var n = meters4[i];
 		var p = local.values.getChild("Meters").addFloatParameter(n,n,0,0,1);
 	}
-
 }
 
 var meters4 = [
@@ -67,7 +71,12 @@ function update(deltaTime) {
 }
 
 function keepAlive() {
-	local.send("/meters", "/meters/4");
+	if (paramUseMeters.get()) {
+		local.send("/meters", "/meters/4");
+	}
+	if (paramUseControls.get()) {
+		local.send("/xremote");
+	}
 }
 
 
@@ -345,7 +354,7 @@ function generic_mix_mlevel(targetType, targetNumber, value) { // // /ch/XX/mix/
 	local.send("/"+targetType+"/"+targetNumber+"/mix/mlevel", value);
 }
 
-function generic_mix_on(targetType, targetNumber, mix, value) { // // /ch/XX/mix/0116/on enum {OFF, ON}
+function generic_mix_send_on(targetType, targetNumber, mix, value) { // // /ch/XX/mix/0116/on enum {OFF, ON}
 	if (targetNumber < 10) {targetNumber = "0"+targetNumber; } 
 	if (mix < 10) {mix = "0"+mix; } 
 	local.send("/"+targetType+"/"+targetNumber+"/mix/"+mix+"/on", value);
