@@ -38,6 +38,7 @@ function oscEvent(address, args) {
 				var index = parseInt(Math.floor(j/4))-1;
 				if (index < meters4.length) {
 					var f = bytesToFloat([data[j+0], data[j+1], data[j+2], data[j+3]]);
+					f = util.getFloatFromBytes(data[j+0], data[j+1], data[j+2], data[j+3]);
 					var n = meters4[index];
 					local.values.getChild("Meters").getChild(n).set(f);
 
